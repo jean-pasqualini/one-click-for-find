@@ -1,0 +1,20 @@
+{% extends "RangeFindOneClickBundle::layout.html.twig" %}
+
+{% block javascripts %}
+	{% 
+	    javascripts output='js/index.js'
+	    '@RangeFindOneClickBundle/Resources/public/js/index.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
+
+{% block header_action_right %}<a href="{{ path('RangeFindOneClickBundle_addObject') }}" data-icon="add">Ajouter un objet</a>{% endblock %}
+
+{% block middle %}
+		<input type="search" x-webkit-speech actionSearch="{{ path('RangeFindOneClickBundle_searchObjet') }}" data-inline="true" id="search-objet"/> 
+		<div class="list-objets">
+		<ul data-role='listview' data-inset='true' class="list-objets">
+			{% include "RangeFindOneClickBundle:Default:listobjet.html.twig" %}
+		</ul>
+{% endblock %}

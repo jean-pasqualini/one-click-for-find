@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</script>
+	{% block styles %}{% endblock %}
+	{% block javascripts %}
+		{% 
+		    javascripts output='js/global.js'
+		    '@RangeFindOneClickBundle/Resources/public/js/global.js'
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	{% endblock %}
+	
+	{% block stylesheets %}
+		{% 
+		    stylesheets output='css/global.css' filter="cssrewrite"
+		    '@RangeFindOneClickBundle/Resources/public/css/global.css'
+		    "css/jquery-ui-1.8.16.custom.css"
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	{% endblock %}
+</head> 
+<body> 
+
+<div data-role="page" data-theme="b">
+
+	<div data-role="header">
+		{% block header_action_left %}
+			{% if is_granted("ROLE_ADMIN") %}
+				<a href="/logout" data-icon="grid">Se deconnecter</a>
+			{% else %}
+				<a href="{{ path("loginMobile") }}" data-icon="grid">Se connecter</a>
+			{% endif %}
+		{% endblock %}
+		<h1>{% block title %} Cliquez ! Trouvez ! {% endblock %}</h1>
+		{% block header_action_right %}{% endblock %}
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		{% block middle %}
+		{% endblock %}
+			<a href="javascript:history.go(-1);" data-role="button"> Retour à la page précédente </a>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>

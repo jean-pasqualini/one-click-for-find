@@ -1,0 +1,7 @@
+{% extends "RangeFindOneClickBundle::layout.html.twig" %}
+{% block title %} Supprimer un objet ? {% endblock %}
+{% block middle %}
+	<h3> Etes vous sur de vouloir supprimer {{ objet.getTitre() }} ? </h3>
+	<a href="#" data-role="button" data-inline="true" data-theme="c">Oui</a> 
+	<a href="javascript:history.go(-1);" data-role="button" data-inline="true" data-theme="b">Non</a>
+{% endblock %}

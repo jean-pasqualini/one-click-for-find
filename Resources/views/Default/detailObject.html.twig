@@ -1,0 +1,42 @@
+{% extends "RangeFindOneClickBundle::layout.html.twig" %}
+
+{% block header_action_right %}<a href="{{ path('RangeFindOneClickBundle_editObject', {"id" : objet.getId() }) }}" data-icon="edit">Editer l'objet</a>{% endblock %}
+
+{% block title %} {{ parent() }} - Détails de {{ objet.getTitre }} {% endblock %}
+
+{% block middle %}
+
+			<ul class="tags-list">
+				{% for tag in objet.getTags() %} 
+					<li class="tag" date-role="button">
+						{{ tag.getNom() }} [X]
+					</li>
+				{% endfor %}
+			</ul>
+	<h3 class="objet-titre">{{ objet.getTitre() }} | {{ objet.getDate() | date("l d F Y") }}</h3>
+	<div class="objet ui-grid-a">
+		<div class="objet-thumbail ui-block-a">
+			<img src="/{{ objet.getPhoto().getWebPath() }}" width="250"/>
+		</div>
+		<div class="objet-description ui-block-b">
+			{{ objet.getDescription() }}
+		</div>
+	</div>
+	{% for location in path %}
+		{{ location.getTitre() }} {% if not loop.last %}>{% endif %}
+	{% endfor %}
+	<div id="map_canvas" class="ui-grid-a" style="position: relative; width: 500px; margin: auto;">
+		<img src="http://wadeadama55.vip-blog.com/medias/0507/wadeadama55-vip-blog-com-70022martinique-plan-maison.gif"/>
+		{% for location in path %}
+			<div class="emplacement" style="position: absolute; z-index: 5; top: 50px; left: 50px;">
+				<a href="#">
+					<img src="http://www.programmes-neufs-var.com/images/pointeur.gif"/>
+					<div class="bulle">
+						{{ location.getTitre() }}
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

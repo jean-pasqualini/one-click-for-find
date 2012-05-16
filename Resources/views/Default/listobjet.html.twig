@@ -1,0 +1,17 @@
+				{% for objet in objets %}
+					<li data-split-icon="add">
+						<a href="{{ path('RangeFindOneClickBundle_detailObject', {"id": objet.getId() }) }}">
+							<img src="/{{ objet.getPhoto().getWebPath() }}" width="60" height="60" style="margin: 5px; border: solid gray 5px;">
+							<h3>{{ objet.getTitre() }}</h3>
+							<p>{{ objet.getDescription() }}</p>
+							<ul class="tags-list">
+							{% for tag in objet.getTags() %} 
+								<li class="tag">
+									{{ tag.getNom() }}
+								</li>
+							{% endfor %}
+							</ul>
+							<p class="ui-li-aside">{{ objet.getDate() | date("l d F Y") }}</p>
+						</a>
+					</li>
+				{% endfor %}

@@ -1,0 +1,15 @@
+{% extends "RangeFindOneClickBundle::layout.html.twig" %}
+
+{% block header_action_right %}<a href="{{ path('RangeFindOneClickBundle_deleteObject',{"id" : objet.getId() }) }}" data-icon="delete" data-rel="dialog">Supprimer l'objet</a>{% endblock %}
+
+{% block title %} {{ parent() }} - Editer un objet {% endblock %}
+
+{% block middle %}
+		<fieldset>
+			<legend>Editer un objet</legend>
+			<form action="#" method="post">
+				{{ form_widget(form) }}
+				<input type="submit" value="Editer">
+			</form>
+		
+{% endblock %}

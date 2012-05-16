@@ -1,0 +1,35 @@
+RangeFindOneClickBundle_homepage:
+    pattern:  /
+    defaults: { _controller: RangeFindOneClickBundle:Default:index }
+
+RangeFindOneClickBundle_addObject:
+    pattern: /addObject
+    defaults: { _controller: RangeFindOneClickBundle:Default:addObject }
+
+RangeFindOneClickBundle_addLocation:
+    pattern: /addLocation
+    defaults: { _controller: RangeFindOneClickBundle:Default:addLocation }
+
+RangeFindOneClickBundle_getTagId:
+    pattern: /getTagId
+    defaults: { _controller: RangeFindOneClickBundle:Default:getTagId }
+
+RangeFindOneClickBundle_detailObject:
+    pattern: /detailObject/{id}
+    defaults: { _controller: RangeFindOneClickBundle:Default:detailObject }
+
+RangeFindOneClickBundle_editObject:
+    pattern: /editObject/{id}
+    defaults: { _controller: RangeFindOneClickBundle:Default:editObject }
+
+RangeFindOneClickBundle_deleteObject:
+    pattern: /deleteObject/{id}
+    defaults: { _controller: RangeFindOneClickBundle:Default:deleteObject }
+
+RangeFindOneClickBundle_searchObjet:
+    pattern: /searchObjet/
+    defaults: { _controller: RangeFindOneClickBundle:Default:searchObject }
+    
+loginMobile:
+    pattern:   /loginMobile
+    defaults:  { _controller: RangeFindOneClickBundle:Default:login }
