@@ -11,6 +11,10 @@ Un objet peut etre un objet mais aussi un conteneur
 
 un objet se trouve dans un autre objet qui de trouve dans un autre objet 
 
+Un objet peut avoir une representation sous forme d'image ou de document numérique
+
+telle qu'une facture numérisé pour une facture physique
+
 On a une hierarchie de lieux
 
 Pomme => 3eme porte => armoire => cuisine
