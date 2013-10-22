@@ -1,0 +1,4 @@
+findoneclickbundle:
+    resource: "@RangeFindOneClickBundle/Resources/config/routing.yml"
+    
+    

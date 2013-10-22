@@ -49,7 +49,7 @@ class Objet
     /**
      * @var Document $photo
      *
-     * @ORM\OneToOne(targetEntity="Smc\Module\PhotoBundle\Entity\Document")
+     * X@ORM\OneToOne(targetEntity="Smc\Module\PhotoBundle\Entity\Document")
      */
     private $photo;
 

@@ -45,7 +45,7 @@ class Lieu
 
 
     /**
-     * @gedmo:TreeParent
+     * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Lieu", inversedBy="parent")
      */
     private $parent;

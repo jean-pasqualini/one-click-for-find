@@ -1,7 +1,7 @@
 				{% for objet in objets %}
 					<li data-split-icon="add">
 						<a href="{{ path('RangeFindOneClickBundle_detailObject', {"id": objet.getId() }) }}">
-							<img src="/{{ objet.getPhoto().getWebPath() }}" width="60" height="60" style="margin: 5px; border: solid gray 5px;">
+							<img src="/{% if objet.getPhoto() is not null %}{{ objet.getPhoto().getWebPath() }}{% endif %}" width="60" height="60" style="margin: 5px; border: solid gray 5px;">
 							<h3>{{ objet.getTitre() }}</h3>
 							<p>{{ objet.getDescription() }}</p>
 							<ul class="tags-list">

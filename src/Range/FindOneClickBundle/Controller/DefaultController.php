@@ -81,7 +81,7 @@ class DefaultController extends Controller
 		
 		if($request->getMethod() == "POST")
 		{
-			$form->bindRequest($request);
+			$form->bind($request);
 			
 			if($form->isValid())
 			{
@@ -91,7 +91,7 @@ class DefaultController extends Controller
 				
 				$em->persist($objet);
 				
-				$em->persist($objet->getPhoto());
+				//$em->persist($objet->getPhoto());
 				
 				foreach($objet->getTags() as $tag)
 				{
@@ -126,7 +126,7 @@ class DefaultController extends Controller
 		
 		if($request->getMethod() == "POST")
 		{
-			$form->bindRequest($request);
+			$form->bind($request);
 			
 			if($form->isValid())
 			{
@@ -159,13 +159,18 @@ class DefaultController extends Controller
 		
 		$index = $objet->getLocation();
 		
-		$path = array($index);
+		$path = array();
 		
-		while($index = $index->getParent())
+		if(!empty($index))
 		{
-			$path[] = $index;
-			
-			$analyse = $index->getParent();
+		    $path[] = $index;
+		    
+    		while($index = $index->getParent())
+    		{
+    			$path[] = $index;
+    			
+    			$analyse = $index->getParent();
+    		}
 		}
 		
 		$path = array_reverse($path);

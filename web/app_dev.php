@@ -1,7 +1,6 @@
 <?php
 
-date_default_timezone_set("America/New_York");
-error_reporting(E_ALL);
+//date_default_timezone_set("America/New_York");
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
@@ -9,7 +8,6 @@ use Symfony\Component\Debug\Debug;
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 //umask(0000);
 
-set_time_limit(0);
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 Debug::enable();
