@@ -27,14 +27,14 @@ class Lieu
      *
      * @ORM\Column(name="Lat", type="integer")
      */
-    private $Lat;
+    private $Lat = 0;
 
     /**
      * @var integer $Lng
      *
      * @ORM\Column(name="Lng", type="integer")
      */
-    private $Lng;
+    private $Lng = 0;
 
     /**
      * @var string $titre
@@ -42,18 +42,6 @@ class Lieu
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
-
-
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Lieu", inversedBy="parent")
-     */
-    private $parent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Lieu", mappedBy="children")
-     */
-    private $children;
 
     /**
      * Get id
@@ -124,26 +112,6 @@ class Lieu
     {
         return $this->titre;
     }
-	
-	/**
-	 * Get parent 
-	 * 
-	 * @return Lieu
-	 */
-	public function getParent()
-	{
-		return $this->parent;
-	}
-	
-	/**
-	 * Set Parent 
-	 * 
-	 * @param Lieu $lieu
-	 */
-	public function setParent(Lieu $lieu)
-	{
-		$this->parent = $lieu;
-	}
 	
 	public function __toString()
 	{

@@ -4,13 +4,13 @@ namespace Range\FindOneClickBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Smc\Module\PhotoBundle\Entity\Document;
-
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Range\FindOneClickBundle\Entity\Objet
- *
+ * @Gedmo\Tree(type="nested")
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Range\FindOneClickBundle\Entity\ObjetRepository")
  */
@@ -25,12 +25,12 @@ class Objet
      */
     private $id;
 
-	/**
-	 * @var string $identifiant
-	 * 
-	 * @ORM\Column(name="identifiant", type="string")
-	 */
-	private $identifiant;
+    /**
+     * @var string $identifiant
+     *
+     * @ORM\Column(name="identifiant", type="string")
+     */
+    private $identifiant;
 
     /**
      * @var string $titre
@@ -49,16 +49,9 @@ class Objet
     /**
      * @var Document $photo
      *
-     * X@ORM\OneToOne(targetEntity="Smc\Module\PhotoBundle\Entity\Document")
+     * @ORM\OneToOne(targetEntity="Document")
      */
     private $photo;
-
-    /**
-     * @var string $location
-     *
-     * @ORM\ManyToOne(targetEntity="Lieu")
-     */
-    private $location;
 
     /**
      * @var date $date
@@ -66,13 +59,78 @@ class Objet
      * @ORM\Column(name="date", type="date")
      */
     private $date;
-	
-	/**
-	 * @var Tags $tags
-	 * 
-	 * @ORM\ManyToMany(targetEntity="Tags")
-	 */
-	private $tags;
+
+    /**
+     * @var Tags $tags
+     *
+     * @ORM\ManyToMany(targetEntity="Tags")
+     */
+    private $tags;
+
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     */
+    private $lft;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\Column(name="root", type="integer", nullable=true)
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Objet", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Objet", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    private $container = false;
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setParent(Objet $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
+    }
 
 	/**
 	 * Constructeur
@@ -84,16 +142,6 @@ class Objet
 		$this->date = new \DateTime();
 		$this->tags = new ArrayCollection();
 	}
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set titre
@@ -173,26 +221,6 @@ class Objet
     public function getPhoto()
     {
         return $this->photo;
-    }
-
-    /**
-     * Set location
-     *
-     * @param Lieu $location
-     */
-    public function setLocation(Lieu $location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * Get location
-     *
-     * @return Lieu
-     */
-    public function getLocation()
-    {
-        return $this->location;
     }
 
     /**

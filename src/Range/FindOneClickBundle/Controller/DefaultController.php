@@ -72,6 +72,11 @@ class DefaultController extends Controller
 		
 		return new Response(json_encode($retour));
 	}
+
+    public function testNotifAction()
+    {
+        return new Response("test");
+    }
 	
 	public function addObjectAction()
 	{
@@ -155,9 +160,9 @@ class DefaultController extends Controller
 	
 	public function detailObjectAction(Objet $objet)
 	{
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		
-		$index = $objet->getLocation();
+		$index = $objet->getParent();
 		
 		$path = array();
 		

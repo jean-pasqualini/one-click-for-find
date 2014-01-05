@@ -29,7 +29,11 @@ RangeFindOneClickBundle_deleteObject:
 RangeFindOneClickBundle_searchObjet:
     pattern: /searchObjet/
     defaults: { _controller: RangeFindOneClickBundle:Default:searchObject }
-    
+
+RangeFindOneClickBundle_testNotif:
+    pattern: /testNotif
+    defaults: { _controller: RangeFindOneClickBundle:Default:testNotif }
+
 loginMobile:
     pattern:   /loginMobile
     defaults:  { _controller: RangeFindOneClickBundle:Default:login }
