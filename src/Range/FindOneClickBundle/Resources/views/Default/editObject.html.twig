@@ -4,12 +4,16 @@
 
 {% block title %} {{ parent() }} - Editer un objet {% endblock %}
 
+{% form_theme form "RangeFindOneClickBundle:form:fields.html.twig" %}
+
 {% block middle %}
+
 		<fieldset>
 			<legend>Editer un objet</legend>
 			<form action="#" method="post">
 				{{ form_widget(form) }}
 				<input type="submit" value="Editer">
 			</form>
+        </fieldset>
 		
 {% endblock %}

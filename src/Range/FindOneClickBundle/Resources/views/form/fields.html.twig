@@ -1,0 +1,8 @@
+{% extends "form_div_layout.html.twig" %}
+
+{% block date_widget %}
+{% spaceless %}
+    {% set type = "text" %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock date_widget %}

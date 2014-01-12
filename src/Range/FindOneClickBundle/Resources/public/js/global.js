@@ -37,7 +37,6 @@ $(document).ready(function() {
             });
             
             $("input[type=text].tag")
-            .die()
             .autocomplete({
             	source: availableTags
             });

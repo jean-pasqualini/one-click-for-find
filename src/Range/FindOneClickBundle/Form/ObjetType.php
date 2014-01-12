@@ -18,7 +18,14 @@ class ObjetType extends AbstractType
         	->add('identifiant')
             ->add('titre')
             ->add('description')
-            ->add('date')
+            ->add('date', 'date', array(
+                "widget" => "single_text",
+                "attr" => array(
+                    "data-role" => "date",
+                    "data-inline" => "true",
+                    "type" => "text"
+                )
+            ))
             //->add('photo', new DocumentType)
             ->add('parent')
 			//->add('tags', 'collection', array('type' => new TagsType))
