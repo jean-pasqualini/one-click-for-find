@@ -38,77 +38,67 @@ class DefaultController extends Controller
 			
 		$request = $this->getRequest();
 		
-		$world = $request->request->get("world");
+		$world = $request->query->get("term");
 		
 		if(empty($world))
 		{
-			$retour["etat"] = false;
-			$retour["message"] = "Aucun message";
-			$retour["data"] = array();
-			
-			return new Response(json_encode($retour));
+			return new Response(json_encode(array()));
 		}
 		
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		
-		$tag = $em->getRepository("RangeFindOneClickBundle:Tags")->findOneByNom($world);
-		
-		if(empty($tag))
-		{
-			$tag = new Tags();
-			
-			$tag->setNom($world);
-			
-			$em->persist($tag);
-			
-			$em->flush();
-		}
-		
-		
-		$retour["etat"] = true;
-		$retour["data"] = array(
-			"id" => $tag->getId()
-		);
-		
-		return new Response(json_encode($retour));
+		$tagsResult = $em->getRepository("RangeFindOneClickBundle:Tags")->findByNom($world);
+
+        $tags = array();
+
+        foreach($tagsResult as $tagresult)
+        {
+            $tags[] = array(
+                "id" => $tagresult->getId(),
+                "label" => $tagresult->getNom(),
+                "value" => $tagresult->getNom()
+            );
+        }
+
+		return new Response(json_encode($tags));
 	}
 
     public function testNotifAction()
     {
         return new Response("test");
     }
-	
+
 	public function addObjectAction()
 	{
 		$form = $this->createForm(new ObjetType(), new Objet());
-		
+
 		$request = $this->getRequest();
-		
+
 		if($request->getMethod() == "POST")
 		{
 			$form->bind($request);
-			
+
 			if($form->isValid())
 			{
 				$em = $this->getDoctrine()->getEntityManager();
-				
+
 				$objet = $form->getData();
-				
+
 				$em->persist($objet);
-				
+
 				//$em->persist($objet->getPhoto());
-				
+
 				foreach($objet->getTags() as $tag)
 				{
 					$em->persist($tag);
 				}
-								
+
 				$em->flush();
-				
+
 				return $this->redirect($this->generateUrl("RangeFindOneClickBundle_homepage"));
 			}
 		}
-		
+
 		return $this->render("RangeFindOneClickBundle:Default:addObject.html.twig", array(
 			"form" => $form->createView()
 		));
@@ -117,13 +107,13 @@ class DefaultController extends Controller
 	public function addLocationAction()
 	{
 		$form = $this->createForm(new LieuType(), new Lieu());
-		
+
 		return $this->render("RangeFindOneClickBundle:Default:addLocation.html.twig",
 		array(
 			"form" => $form->createView()
 		));
 	}
-	
+
 	public function editObjectAction(Objet $objet)
 	{
 		$form = $this->createForm(new ObjetType(), $objet);

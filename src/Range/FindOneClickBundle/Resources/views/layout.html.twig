@@ -12,6 +12,7 @@
 		{% 
 		    javascripts output='js/global.js'
 		    '@RangeFindOneClickBundle/Resources/public/js/global.js'
+            '@RangeFindOneClickBundle/Resources/public/js/tag-it.js'
 		%}
 			<script src="{{ asset_url }}"></script>
 		{% endjavascripts %}
@@ -22,6 +23,7 @@
 		    stylesheets output='css/global.css' filter="cssrewrite"
 		    '@RangeFindOneClickBundle/Resources/public/css/global.css'
 		    "http://code.jquery.com/ui/1.10.3/themes/black-tie/jquery-ui.css"
+            "@RangeFindOneClickBundle/Resources/public/css/jquery.tagit.css"
 		%}
 			<link rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}

@@ -44,47 +44,19 @@ form p {
 	text-align: left;
 }
 
+.hidden {
+    display: none !important;
+}
+
+ul {
+    margin: 0px;
+}
+
 form p label {
 	display: block;
-	float: left;
 	width: 150px;
 	text-align: right;
 	padding-right: 5px;
 }
 
 
-/* Special tag */
-div.tag input {
-	background: transparent;
-	border: none;
-	height: 30px;
-	font-weight: bold;
-}
-
-div.tag {
-	display: inline-block;
-	background-image: none;
-}
-
-div.tag ul {
-	margin: 0px;
-	padding: 0px;
-	overflow: hidden;
-	float: left;
-}
-
-div.tag ul li {
-	float: left;
-	list-style: none;
-	background: blue;
-	padding: 2px;
-	padding-left: 4px;
-	padding-right: 4px;
-	margin: 5px;
-	color: white;
-	border-radius: 3px;
-}
-
-div.tag select { 
-	display: none;
-}

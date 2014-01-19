@@ -1,4 +1,5 @@
 {% extends "RangeFindOneClickBundle::layout.html.twig" %}
+{% form_theme form "RangeFindOneClickBundle:form:fields.html.twig" %}
 {% block title %} {{ parent() }} - Ajouter un objet {% endblock %}
 {% block middle %}
 		<fieldset>
@@ -41,12 +42,8 @@
 						</div>
 					</p>
 					<p>
-						<label>Tags : </label>
-						<input type="text" class="tag" id="tag" data-icon="add" select-target="#range_findoneclickbundle_objettype_tags" world-update="{{ path('RangeFindOneClickBundle_getTagId') }}">
-					</p>
-					<p style="display: none;">
 						<label>{{ form_label(form.tags) }}</label>
-						{{ form_widget(form.tags, { "attr" : { "data-role" : "none"}}) }}
+						{{ form_widget(form.tags, { "attr" : { "class" : "tag hidden"}}) }}
 					</p>
 					
 					{{ form_rest(form) }}

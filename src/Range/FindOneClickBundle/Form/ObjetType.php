@@ -29,7 +29,7 @@ class ObjetType extends AbstractType
             //->add('photo', new DocumentType)
             ->add('parent')
 			//->add('tags', 'collection', array('type' => new TagsType))
-            ->add('tags', null, array("attr" => array("data-native-menu" => "false")))
+            ->add('tags', "text", array("attr" => array("data-native-menu" => "false")))
         ;
     }
 

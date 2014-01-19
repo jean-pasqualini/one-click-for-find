@@ -28,15 +28,15 @@
     line-height: 12px;
     border-bottom: 1px solid #E5E5E5;
     border-top: 1px solid #fff;
-    color: #789d7a;
+    color: #78959D;
     
 }
 
 .ui-autocomplete .ui-menu-item a.ui-state-hover,
 .ui-autocomplete .ui-menu-item a.ui-state-active {
-    background-color: #c0e2c0;
+    background-color: #c0d1e2;
     color: #555;
-    border-color: #a6f7aa;
+    border-color: #a6cef7;
 }
 
 .ui-autocomplete-loading {
@@ -54,7 +54,7 @@ ul.tagit {
     margin-bottom: 16px;
     border: 1px solid #E5E5E5;
     background: #fff;
-    color: #555;
+    color: #fff;
 }
 
 ul.tagit li {
@@ -74,19 +74,19 @@ ul.tagit.ui-sortable li.tagit-choice a.ui-icon.ui-icon-grip-dotted-vertical{
 }
 
 ul.tagit li.tagit-choice {
-    background-color: #dff8de;
-    border: 1px solid #caf3cd;
+    background-color: #333;
+    border: 1px solid #333;
     padding: 2px 13px 3px 4px;
 }
 
 ul.tagit li.tagit-choice.selected {
-    background-color: #f5b0b0;
+    background-color: #633;
     border-color: #f76464;
 }
 
 ul.tagit li.tagit-choice:hover {
-    background-color: #caf3cd;
-    border-color: #6de072;
+    background-color: #555;
+    border-color: #444;
 }
 
 ul.tagit li.tagit-new {
@@ -104,7 +104,7 @@ ul.tagit li.tagit-choice input {
 }
 
 ul.tagit li.tagit-choice a.tagit-close {
-    color: #777777;
+    color: #ccc;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
@@ -115,11 +115,12 @@ ul.tagit li.tagit-choice a.tagit-close {
     display: block;
     top: 0;
     right: 3px;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 0 rgba(100, 100, 100, 0.7);
 }
 
 ul.tagit li.tagit-choice a.tagit-close:hover {
-    color: #535353;
+    color: #fff;
+    text-shadow: none;
 }
 
 ul.tagit div.tagit-label.hidden {
