@@ -9,3 +9,8 @@ services:
         class: Range\FindOneClickBundle\Listener\ObjectListener
         tags:
             - { name : kernel.event_subscriber }
+    rfoc.type.tags_selector:
+        class: Range\FindOneClickBundle\Form\TagSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: tags_selector }

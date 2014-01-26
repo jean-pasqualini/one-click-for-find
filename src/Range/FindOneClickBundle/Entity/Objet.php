@@ -257,6 +257,16 @@ class Objet
 	{
 		$this->tags[] = $tag;
 	}
+
+    public function setTags(array $tags)
+    {
+        $this->tags = new ArrayCollection($tags);
+    }
+
+    public function removeTag(Tags $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
 	
 	public function isTag()
 	{

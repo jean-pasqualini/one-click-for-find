@@ -11,7 +11,48 @@
 		<fieldset>
 			<legend>Editer un objet</legend>
 			<form action="#" method="post">
-				{{ form_widget(form) }}
+                {{ form_errors(form) }}
+                <p>
+                    <label>{{ form_label(form.identifiant) }}</label>
+                    {{ form_widget(form.identifiant, {"attr" : {"data-inline" : "true"}}) }}
+                </p>
+                <p>
+                    <label>{{ form_label(form.titre) }}</label>
+                    {{ form_widget(form.titre) }}
+                </p>
+                <p>
+                    <label>{{ form_label(form.description) }}</label>
+                    {{ form_widget(form.description) }}
+                </p>
+                {#
+                <p>
+                    <label>{{ form_label(form.photo.name) }}</label>
+                    {{ form_widget(form.photo.name) }}
+                </p>
+                <p>
+                    <label>{{ form_label(form.photo.fichier) }}</label>
+                    {{ form_widget(form.photo.fichier) }}
+                </p>
+                #}
+                <p>
+                    {{ form_label(form.date) }}
+                <div data-role="controlgroup" data-type="horizontal" data-inline="true">
+                    {{ form_widget(form.date) }}
+                </div>
+                </p>
+                <p>
+                    <label>{{ form_label(form.parent) }}</label>
+                <div data-role="controlgroup" data-type="horizontal" data-inline="true">
+                    {{ form_widget(form.parent) }}
+                    <a href="{{ path('RangeFindOneClickBundle_addLocation') }}" data-rel="dialog" data-role="button" data-icon="add">Ajouter</a>
+                </div>
+                </p>
+                <p>
+                    <label>{{ form_label(form.tags) }}</label>
+                    {{ form_widget(form.tags, { "attr" : { "class" : "tag hidden"}}) }}
+                </p>
+
+                {{ form_rest(form) }}
 				<input type="submit" value="Editer">
 			</form>
         </fieldset>

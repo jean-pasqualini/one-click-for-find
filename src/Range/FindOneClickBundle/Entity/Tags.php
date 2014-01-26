@@ -24,9 +24,9 @@ class Tags
     /**
      * @var string $nom
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nom;
+    private $name;
 
 
     /**
@@ -40,27 +40,24 @@ class Tags
     }
 
     /**
-     * Set nom
-     *
-     * @param string $nom
+     * @param string $name
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
     }
 
     /**
-     * Get nom
-     *
-     * @return string 
+     * @return string
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
+
 	
 	public function __toString()
 	{
-		return $this->getNom();
+		return $this->getName();
 	}
 }
