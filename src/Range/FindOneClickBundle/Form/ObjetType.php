@@ -17,9 +17,12 @@ class ObjetType extends AbstractType
         $builder
         	->add('identifiant')
             ->add('titre')
-            ->add('description')
+            ->add('description', null, array(
+                "required" => false
+            ))
             ->add('date', 'date', array(
                 "widget" => "single_text",
+                'format' => 'dd/MM/yyyy',
                 "attr" => array(
                     "data-role" => "date",
                     "data-inline" => "true",

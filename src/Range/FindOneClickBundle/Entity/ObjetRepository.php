@@ -89,7 +89,11 @@ class ObjetRepository extends NestedTreeRepository
         $tags = explode(" ", $subject);
 
       //  $queryBuilder->andWhere($queryBuilder->expr()->in("o.titre", $tags));
-				
+
+        $queryBuilder->addOrderBy("o.id", "DESC");
+
+        $queryBuilder->setMaxResults(10);
+
 		$query = $queryBuilder->getQuery();
 		
 		return $query->getResult();

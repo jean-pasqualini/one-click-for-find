@@ -112,6 +112,8 @@ class TagsTransformer implements DataTransformerInterface
                 if(null === $tag)
                 {
                      $tag = new Tags();
+
+                     $tag->setName($name);
                 }
 
             $this->om->persist($tag);

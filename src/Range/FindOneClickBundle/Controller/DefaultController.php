@@ -24,8 +24,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
     	$em = $this->getDoctrine()->getEntityManager();
-		
-		$objets = $em->getRepository("RangeFindOneClickBundle:Objet")->findAll();
+
+        $query = $em->createQuery("SELECT objet FROM RangeFindOneClickBundle:Objet objet ORDER BY objet.id DESC");
+
+		$objets = $query->setMaxResults(5)->getResult();
 		
         return $this->render('RangeFindOneClickBundle:Default:index.html.twig', array(
 			"objets" => $objets
@@ -44,10 +46,14 @@ class DefaultController extends Controller
 		{
 			return new Response(json_encode(array()));
 		}
-		
+
 		$em = $this->getDoctrine()->getManager();
-		
-		$tagsResult = $em->getRepository("RangeFindOneClickBundle:Tags")->findByNom($world);
+
+        $query = $em->createQuery("SELECT tag FROM RangeFindOneClickBundle:Tags tag WHERE tag.name LIKE :search");
+
+        $query->setParameter("search", "%".$world."%");
+
+		$tagsResult = $query->getResult();
 
         $tags = array();
 
@@ -55,8 +61,8 @@ class DefaultController extends Controller
         {
             $tags[] = array(
                 "id" => $tagresult->getId(),
-                "label" => $tagresult->getNom(),
-                "value" => $tagresult->getNom()
+                "label" => $tagresult->getName(),
+                "value" => $tagresult->getName()
             );
         }
 
@@ -199,7 +205,7 @@ class DefaultController extends Controller
 	
 	public function searchObjectAction()
 	{
-    	$em = $this->getDoctrine()->getEntityManager();
+    	$em = $this->getDoctrine()->getManager();
 		
 		$literalQuery = $this->getRequest()->request->get("literalQuery");		
 		

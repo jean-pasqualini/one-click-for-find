@@ -9,14 +9,17 @@
 					<p>
 						<label>{{ form_label(form.identifiant) }}</label>
 						{{ form_widget(form.identifiant, {"attr" : {"data-inline" : "true"}}) }}
+                        {{ form_errors(form.identifiant) }}
 					</p>
 					<p>
 						<label>{{ form_label(form.titre) }}</label>
 						{{ form_widget(form.titre) }}
+                        {{ form_errors(form.titre) }}
 					</p>
 					<p>
 						<label>{{ form_label(form.description) }}</label>
 						{{ form_widget(form.description) }}
+                        {{ form_errors(form.description) }}
 					</p>
 					{#
 					<p>
@@ -33,6 +36,7 @@
 						<div data-role="controlgroup" data-type="horizontal" data-inline="true">
 							{{ form_widget(form.date) }}
 						</div>
+                        {{ form_errors(form.date) }}
 					</p>
 					<p>
 						<label>{{ form_label(form.parent) }}</label>
@@ -40,11 +44,13 @@
 							{{ form_widget(form.parent) }}
 							<a href="{{ path('RangeFindOneClickBundle_addLocation') }}" data-rel="dialog" data-role="button" data-icon="add">Ajouter</a>
 						</div>
+                        {{ form_errors(form.parent) }}
 					</p>
 					<p>
 						<label>{{ form_label(form.tags) }}</label>
 						{{ form_widget(form.tags, { "attr" : { "class" : "tag hidden"}}) }}
-					</p>
+                        {{ form_errors(form.tags) }}
+                    </p>
 					
 					{{ form_rest(form) }}
 				<input type="submit" value="Ajouter">

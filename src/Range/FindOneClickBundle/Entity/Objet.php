@@ -44,7 +44,7 @@ class Objet
      *
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+    private $description = "";
 
     /**
      * @var Document $photo
@@ -104,6 +104,11 @@ class Objet
      */
     private $children;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Objet")
+     */
+    private $linkedsObject;
+
     private $container = false;
 
     /**
@@ -141,7 +146,23 @@ class Objet
 	{
 		$this->date = new \DateTime();
 		$this->tags = new ArrayCollection();
+        $this->linkedsObject = new ArrayCollection();
 	}
+
+    public function getLinkedsObject()
+    {
+        return $this->linkedsObject;
+    }
+
+    public function addLinkedObject(Objet $objet)
+    {
+        $this->linkedsObject[] = $objet;
+    }
+
+    public function removeLinkedObject(Objet $objet)
+    {
+        $this->linkedsObject->removeElement($objet);
+    }
 
     /**
      * Set titre
